@@ -7,11 +7,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "post")
 @NoArgsConstructor
 public class Post extends TimeStamped{
 
@@ -32,6 +35,9 @@ public class Post extends TimeStamped{
 
     @Column(name = "username", nullable = false)
     private String username;
+
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comments = new ArrayList<>();
 
     public Post(PostRequestDto requestDto, User user) {
         this.content = requestDto.getContent();
