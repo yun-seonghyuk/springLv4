@@ -22,18 +22,6 @@ public class UserController {
 
     private final UserService userService;
 
-//    @PostMapping("/user/login")
-//    public ResponseEntity<Message> login(@RequestBody LoginRequestDto requestDto , HttpServletResponse res){
-//
-//        userService.login(requestDto,res);
-//        Message message = new Message();
-//        HttpHeaders headers= new HttpHeaders();
-//        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-//        message.setMsg("로그인 성공");
-//        message.setStatusCode(200);
-//        return new ResponseEntity<>(message,headers,HttpStatus.OK);
-//    }
-
     @PostMapping("/user/signup")
     public ResponseEntity<Message> signup(@RequestBody SignupRequestDto requestDto){
 

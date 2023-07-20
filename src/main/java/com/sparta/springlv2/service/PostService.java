@@ -4,6 +4,7 @@ import com.sparta.springlv2.dto.PostRequestDto;
 import com.sparta.springlv2.dto.PostResponseDto;
 import com.sparta.springlv2.entity.Post;
 import com.sparta.springlv2.entity.User;
+import com.sparta.springlv2.repository.CommentRepository;
 import com.sparta.springlv2.repository.PostRepository;
 import com.sparta.springlv2.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,11 +32,12 @@ public class PostService {
         return postResponseDto;
 
     }
-
+    @Transactional(readOnly = true)
     public List<PostResponseDto> getPosts() {
         return postRepository.findAll().stream().map(PostResponseDto::new).toList();
     }
 
+    @Transactional(readOnly = true)
     public PostResponseDto getPost(Long id) {
         Post post = findPost(id);
         PostResponseDto postResponseDto = new PostResponseDto(post);
@@ -54,6 +57,7 @@ public class PostService {
         return postResponseDto;
     }
 
+
     public void deletePost(Long id, User user) {
         Post post = findPost(id);
         if(post.getUser().getId() == user.getId()){
@@ -64,8 +68,10 @@ public class PostService {
         }
     }
 
-    private Post findPost(Long id) {
+    @Transactional(readOnly = true)
+    public Post findPost(Long id) {
         return postRepository.findById(id).orElseThrow(()->
                 new IllegalArgumentException("선택한 메모는 존재하지 않습니다."));
     }
+
 }

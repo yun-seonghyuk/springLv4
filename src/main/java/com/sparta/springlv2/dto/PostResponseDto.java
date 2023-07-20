@@ -1,11 +1,13 @@
 package com.sparta.springlv2.dto;
 
+import com.sparta.springlv2.entity.Comment;
 import com.sparta.springlv2.entity.Post;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Getter
 public class PostResponseDto {
@@ -16,7 +18,7 @@ public class PostResponseDto {
     private String username;
     private LocalDateTime createAt;
     private LocalDateTime modifiedAt;
-    private List<CommentResponseDto> comments;
+    private List<CommentResponseDto> commentList = new ArrayList<>();
 
     public PostResponseDto(Post post) {
         this.id = post.getId();
@@ -25,6 +27,11 @@ public class PostResponseDto {
         this.createAt = post.getCreatedAt();
         this.modifiedAt = post.getModifiedAt();
         this.username = post.getUser().getUsername();
-        this.comments = post.stream().map(PostResponseDto::new).toList();
+
+        if(post.getComments() != null ){
+            for(Comment comment : post.getComments()){
+                commentList.add(new CommentResponseDto(comment));
+            }
+        }
     }
 }

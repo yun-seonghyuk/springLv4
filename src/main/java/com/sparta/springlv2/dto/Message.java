@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Message {
 
-    String msg;
-    int statusCode;
+    private String msg;
+    private int statusCode;
 
 }

@@ -23,8 +23,8 @@ public class Post extends TimeStamped{
     @Column(name = "post_id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id",nullable = false)
     private User user;
 
     @Column(name = "title", nullable = false)
@@ -33,17 +33,13 @@ public class Post extends TimeStamped{
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "username", nullable = false)
-    private String username;
-
-    @OneToMany(mappedBy = "post")
-    private List<Comment> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
+    private List<Comment> comments;
 
     public Post(PostRequestDto requestDto, User user) {
         this.content = requestDto.getContent();
         this.title = requestDto.getTitle();
         this.user = user;
-        this.username = user.getUsername();
     }
 
     public void update(PostRequestDto postRequestDto) {
