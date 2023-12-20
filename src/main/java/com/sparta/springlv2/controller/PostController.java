@@ -28,9 +28,9 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/post")
-    public PostResponseDto createPost (@RequestBody PostRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
+    public PostResponseDto createPost (@RequestBody PostRequestDto requestDto,
+                                       @AuthenticationPrincipal UserDetailsImpl userDetails){
         User user = userDetails.getUser();
-        log.info(user.getUsername());
         return postService.createPost(requestDto, user);
     }
 
@@ -45,15 +45,17 @@ public class PostController {
     }
 
     @PutMapping("/post/update/{id}")
-    public PostResponseDto updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
+    public PostResponseDto updatePost(@PathVariable Long id,
+                                      @RequestBody PostRequestDto postRequestDto,
+                                      @AuthenticationPrincipal UserDetailsImpl userDetails){
         User user = userDetails.getUser();
         return postService.updatePost(id, postRequestDto, user);
     }
 
     @DeleteMapping("/post/delete/{id}")
-    public ResponseEntity<Message> deletePost(@PathVariable Long id,  @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseEntity<Message> deletePost(@PathVariable Long id,
+                                              @AuthenticationPrincipal UserDetailsImpl userDetails) {
         User user = userDetails.getUser();
-        log.info(user.getUsername());
         postService.deletePost(id,user);
 
         Message message = new Message();

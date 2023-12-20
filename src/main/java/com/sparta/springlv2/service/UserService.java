@@ -18,7 +18,6 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtUtil jwtUtil;
 
     public void signup(SignupRequestDto requestDto) {
         String username = requestDto.getUsername();

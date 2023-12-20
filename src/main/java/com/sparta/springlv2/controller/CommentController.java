@@ -28,22 +28,26 @@ public class CommentController {
 
     @PostMapping
     public CommentResponseDto createComment(@PathVariable Long postId,
-                                            @RequestBody CommentRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
+                                            @RequestBody CommentRequestDto requestDto,
+                                            @AuthenticationPrincipal UserDetailsImpl userDetails){
         User user = userDetails.getUser();
         log.info(user.getUsername());
         return commentService.createComment(requestDto,user,postId);
     }
 
     @PutMapping("{commentId}")
-    public CommentResponseDto updateCommnet(@PathVariable Long postId, @PathVariable Long commentId,
-                                            @RequestBody CommentRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
+    public CommentResponseDto updateCommnet(@PathVariable Long postId,
+                                            @PathVariable Long commentId,
+                                            @RequestBody CommentRequestDto requestDto,
+                                            @AuthenticationPrincipal UserDetailsImpl userDetails){
         User user = userDetails.getUser();
         return commentService.updateComment(postId,commentId,requestDto,user);
     }
 
     @DeleteMapping("{commentId}")
     public ResponseEntity<Message> deleteComment(@PathVariable Long postId,
-                                                 @PathVariable Long commentId, @AuthenticationPrincipal UserDetailsImpl userDetails){
+                                                 @PathVariable Long commentId,
+                                                 @AuthenticationPrincipal UserDetailsImpl userDetails){
         User user= userDetails.getUser();
         commentService.deleteComment(postId,commentId, user);
 

@@ -1,13 +1,13 @@
 package com.sparta.springlv2.controller;
 
-import com.sparta.springlv2.dto.LoginRequestDto;
 import com.sparta.springlv2.dto.Message;
 import com.sparta.springlv2.dto.SignupRequestDto;
 import com.sparta.springlv2.service.UserService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -7,7 +7,6 @@ import com.sparta.springlv2.entity.Post;
 import com.sparta.springlv2.entity.User;
 import com.sparta.springlv2.repository.CommentRepository;
 import com.sparta.springlv2.repository.PostRepository;
-import com.sparta.springlv2.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,10 +19,9 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
-    private final UserRepository userRepository;
+
     public CommentResponseDto createComment(CommentRequestDto requestDto, User user, Long id) {
         Post post = findPost(id);
-        log.info(requestDto.getComment());
         Comment comment = new Comment(user, post,requestDto);
         commentRepository.save(comment);
         CommentResponseDto responseDto = new CommentResponseDto(comment);
@@ -35,36 +33,31 @@ public class CommentService {
     @Transactional
     public CommentResponseDto updateComment(Long postId, Long commentId, CommentRequestDto requestDto, User user) {
 
-        log.info(user.getUsername());
         Post post = findPost(postId);
 
         Comment comment = commentRepository.findById(commentId).orElseThrow(
                 ()-> new IllegalArgumentException("해당 댓글이 없습니다.")
         );
 
-        log.info(post.getUser().getUsername());
         if(!comment.getUser().getUsername().equals(user.getUsername())){
             throw new IllegalArgumentException("해당 작성자가 아닙니다.");
         }
         comment.update(requestDto);
-        commentRepository.save(comment);
         return new CommentResponseDto(comment);
-
     }
 
     public void deleteComment(Long postId, Long commentId, User user) {
 
-        Post post = findPost(postId);
+        findPost(postId);
 
         Comment comment = commentRepository.findById(commentId).orElseThrow(
                 ()-> new IllegalArgumentException("해당 댓글이 없습니다.")
         );
 
-        log.info(post.getUser().getUsername());
-
         if(!comment.getUser().getUsername().equals(user.getUsername())){
             throw new IllegalArgumentException("해당 작성자가 아닙니다.");
         }
+
         commentRepository.delete(comment);
     }
 

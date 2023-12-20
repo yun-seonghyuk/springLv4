@@ -1,13 +1,11 @@
 package com.sparta.springlv2.dto;
 
 import com.sparta.springlv2.entity.Comment;
-import com.sparta.springlv2.entity.Post;
-import com.sparta.springlv2.entity.User;
-import lombok.Getter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Getter
+@Data
 public class CommentResponseDto {
 
     private Long id;
