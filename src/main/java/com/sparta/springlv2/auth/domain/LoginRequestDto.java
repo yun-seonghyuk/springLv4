@@ -1,4 +1,4 @@
-package com.sparta.springlv2.dto;
+package com.sparta.springlv2.auth.domain;
 
 import lombok.Getter;
 import lombok.Setter;

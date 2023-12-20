@@ -1,17 +1,15 @@
 package com.sparta.springlv2.filter;
 
 
-import com.sparta.springlv2.entity.User;
+import com.sparta.springlv2.auth.domain.entity.User;
 import com.sparta.springlv2.jwt.JwtUtil;
-import com.sparta.springlv2.repository.UserRepository;
+import com.sparta.springlv2.auth.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;

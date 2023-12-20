@@ -1,6 +1,6 @@
-package com.sparta.springlv2.repository;
+package com.sparta.springlv2.auth.repository;
 
-import com.sparta.springlv2.entity.User;
+import com.sparta.springlv2.auth.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

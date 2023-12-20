@@ -1,8 +1,8 @@
-package com.sparta.springlv2.controller;
+package com.sparta.springlv2.auth.controller;
 
-import com.sparta.springlv2.dto.Message;
-import com.sparta.springlv2.dto.SignupRequestDto;
-import com.sparta.springlv2.service.UserService;
+import com.sparta.springlv2.post.domain.dto.Message;
+import com.sparta.springlv2.auth.domain.SignupRequestDto;
+import com.sparta.springlv2.auth.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,7 +32,11 @@ public class UserController {
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         message.setMsg("회원가입 성공");
         message.setStatusCode(200);
+
+
         return new ResponseEntity<>(message,headers,HttpStatus.OK);
+
+
     }
 
 }

@@ -1,6 +1,7 @@
-package com.sparta.springlv2.entity;
+package com.sparta.springlv2.post.domain.entity;
 
-import com.sparta.springlv2.dto.CommentRequestDto;
+import com.sparta.springlv2.auth.domain.entity.User;
+import com.sparta.springlv2.post.domain.dto.CommentRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,8 @@ import lombok.Setter;
 @Getter @Setter
 @Table(name = "comment")
 @NoArgsConstructor
-public class Comment extends TimeStamped{
+public class Comment extends TimeStamped {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
@@ -18,6 +20,7 @@ public class Comment extends TimeStamped{
     
     @Column(name = "comment", nullable = false)
     private String comment;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
@@ -33,7 +36,8 @@ public class Comment extends TimeStamped{
         this.post = post;
     }
 
+
     public void update(CommentRequestDto requestDto) {
-        this.comment = requestDto.getComment();
+        this.comment = comment;
     }
 }

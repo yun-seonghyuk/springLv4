@@ -1,11 +1,8 @@
-package com.sparta.springlv2.service;
+package com.sparta.springlv2.auth.service;
 
-import com.sparta.springlv2.dto.LoginRequestDto;
-import com.sparta.springlv2.dto.SignupRequestDto;
-import com.sparta.springlv2.entity.User;
-import com.sparta.springlv2.jwt.JwtUtil;
-import com.sparta.springlv2.repository.UserRepository;
-import jakarta.servlet.http.HttpServletResponse;
+import com.sparta.springlv2.auth.domain.SignupRequestDto;
+import com.sparta.springlv2.auth.domain.entity.User;
+import com.sparta.springlv2.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

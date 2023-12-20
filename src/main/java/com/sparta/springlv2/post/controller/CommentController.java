@@ -1,11 +1,11 @@
-package com.sparta.springlv2.controller;
+package com.sparta.springlv2.post.controller;
 
-import com.sparta.springlv2.dto.CommentRequestDto;
-import com.sparta.springlv2.dto.CommentResponseDto;
-import com.sparta.springlv2.dto.Message;
-import com.sparta.springlv2.entity.User;
+import com.sparta.springlv2.auth.domain.entity.User;
 import com.sparta.springlv2.jwt.UserDetailsImpl;
-import com.sparta.springlv2.service.CommentService;
+import com.sparta.springlv2.post.domain.dto.CommentRequestDto;
+import com.sparta.springlv2.post.domain.dto.CommentResponseDto;
+import com.sparta.springlv2.post.domain.dto.Message;
+import com.sparta.springlv2.post.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.charset.Charset;
@@ -31,7 +30,6 @@ public class CommentController {
                                             @RequestBody CommentRequestDto requestDto,
                                             @AuthenticationPrincipal UserDetailsImpl userDetails){
         User user = userDetails.getUser();
-        log.info(user.getUsername());
         return commentService.createComment(requestDto,user,postId);
     }
 
@@ -41,6 +39,7 @@ public class CommentController {
                                             @RequestBody CommentRequestDto requestDto,
                                             @AuthenticationPrincipal UserDetailsImpl userDetails){
         User user = userDetails.getUser();
+
         return commentService.updateComment(postId,commentId,requestDto,user);
     }
 

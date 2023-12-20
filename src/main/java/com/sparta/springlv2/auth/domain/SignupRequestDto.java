@@ -1,4 +1,4 @@
-package com.sparta.springlv2.dto;
+package com.sparta.springlv2.auth.domain;
 
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;

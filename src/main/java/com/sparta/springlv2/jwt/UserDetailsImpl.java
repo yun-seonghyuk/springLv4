@@ -1,6 +1,6 @@
 package com.sparta.springlv2.jwt;
 
-import com.sparta.springlv2.entity.User;
+import com.sparta.springlv2.auth.domain.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

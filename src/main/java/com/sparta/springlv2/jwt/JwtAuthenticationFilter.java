@@ -1,7 +1,7 @@
 package com.sparta.springlv2.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.springlv2.dto.LoginRequestDto;
+import com.sparta.springlv2.auth.domain.LoginRequestDto;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

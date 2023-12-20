@@ -1,12 +1,11 @@
-package com.sparta.springlv2.controller;
+package com.sparta.springlv2.post.controller;
 
-import com.sparta.springlv2.dto.Message;
-import com.sparta.springlv2.dto.PostRequestDto;
-import com.sparta.springlv2.dto.PostResponseDto;
-import com.sparta.springlv2.entity.User;
+import com.sparta.springlv2.post.domain.dto.Message;
+import com.sparta.springlv2.post.domain.dto.PostRequestDto;
+import com.sparta.springlv2.post.domain.dto.PostResponseDto;
+import com.sparta.springlv2.auth.domain.entity.User;
 import com.sparta.springlv2.jwt.UserDetailsImpl;
-import com.sparta.springlv2.service.PostService;
-import jakarta.servlet.http.HttpServletRequest;
+import com.sparta.springlv2.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;

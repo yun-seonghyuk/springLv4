@@ -1,12 +1,12 @@
-package com.sparta.springlv2.service;
+package com.sparta.springlv2.post.service;
 
-import com.sparta.springlv2.dto.CommentRequestDto;
-import com.sparta.springlv2.dto.CommentResponseDto;
-import com.sparta.springlv2.entity.Comment;
-import com.sparta.springlv2.entity.Post;
-import com.sparta.springlv2.entity.User;
-import com.sparta.springlv2.repository.CommentRepository;
-import com.sparta.springlv2.repository.PostRepository;
+import com.sparta.springlv2.post.domain.dto.CommentRequestDto;
+import com.sparta.springlv2.post.domain.dto.CommentResponseDto;
+import com.sparta.springlv2.post.domain.entity.Comment;
+import com.sparta.springlv2.post.domain.entity.Post;
+import com.sparta.springlv2.auth.domain.entity.User;
+import com.sparta.springlv2.post.repository.CommentRepository;
+import com.sparta.springlv2.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,12 +22,9 @@ public class CommentService {
 
     public CommentResponseDto createComment(CommentRequestDto requestDto, User user, Long id) {
         Post post = findPost(id);
-        Comment comment = new Comment(user, post,requestDto);
-        commentRepository.save(comment);
-        CommentResponseDto responseDto = new CommentResponseDto(comment);
-        return responseDto;
+        Comment comment = commentRepository.save(new Comment(user, post,requestDto));
+        return new CommentResponseDto(comment);
     }
-
 
 
     @Transactional

@@ -1,4 +1,4 @@
-package com.sparta.springlv2.dto;
+package com.sparta.springlv2.post.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

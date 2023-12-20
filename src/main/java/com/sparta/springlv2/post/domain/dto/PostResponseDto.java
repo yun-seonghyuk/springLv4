@@ -1,7 +1,7 @@
-package com.sparta.springlv2.dto;
+package com.sparta.springlv2.post.domain.dto;
 
-import com.sparta.springlv2.entity.Comment;
-import com.sparta.springlv2.entity.Post;
+import com.sparta.springlv2.post.domain.entity.Comment;
+import com.sparta.springlv2.post.domain.entity.Post;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -15,6 +15,7 @@ public class PostResponseDto {
     private Long id;
     private String title;
     private String content;
+    private String comment;
     private String username;
     private LocalDateTime createAt;
     private LocalDateTime modifiedAt;
@@ -33,5 +34,13 @@ public class PostResponseDto {
                 commentList.add(new CommentResponseDto(comment));
             }
         }
+    }
+
+    public PostResponseDto(Comment comment) {
+        this.id = comment.getId();
+        this.username = comment.getUser().getUsername();
+        this.comment = comment.getComment();
+        this.createAt = comment.getCreatedAt();
+        this.modifiedAt = comment.getModifiedAt();
     }
 }

@@ -1,6 +1,6 @@
-package com.sparta.springlv2.repository;
+package com.sparta.springlv2.post.repository;
 
-import com.sparta.springlv2.entity.Comment;
+import com.sparta.springlv2.post.domain.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {

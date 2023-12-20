@@ -1,21 +1,17 @@
-package com.sparta.springlv2.service;
+package com.sparta.springlv2.post.service;
 
-import com.sparta.springlv2.dto.PostRequestDto;
-import com.sparta.springlv2.dto.PostResponseDto;
-import com.sparta.springlv2.entity.Post;
-import com.sparta.springlv2.entity.User;
-import com.sparta.springlv2.repository.CommentRepository;
-import com.sparta.springlv2.repository.PostRepository;
-import com.sparta.springlv2.repository.UserRepository;
+import com.sparta.springlv2.post.domain.dto.PostRequestDto;
+import com.sparta.springlv2.post.domain.dto.PostResponseDto;
+import com.sparta.springlv2.post.domain.entity.Post;
+import com.sparta.springlv2.auth.domain.entity.User;
+import com.sparta.springlv2.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Slf4j
 @Service

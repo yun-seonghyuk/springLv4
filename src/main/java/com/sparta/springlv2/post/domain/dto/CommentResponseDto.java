@@ -1,6 +1,6 @@
-package com.sparta.springlv2.dto;
+package com.sparta.springlv2.post.domain.dto;
 
-import com.sparta.springlv2.entity.Comment;
+import com.sparta.springlv2.post.domain.entity.Comment;
 import lombok.Data;
 
 import java.time.LocalDateTime;

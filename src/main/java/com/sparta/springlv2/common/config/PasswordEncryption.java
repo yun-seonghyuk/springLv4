@@ -1,4 +1,4 @@
-package com.sparta.springlv2.config;
+package com.sparta.springlv2.common.config;
 
 import com.sparta.springlv2.jwt.JwtAuthenticationFilter;
 import com.sparta.springlv2.jwt.JwtAuthorizationFilter;
@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -21,7 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity // 스프링 Security 지원을 가능하게 함
 @RequiredArgsConstructor
-//@EnableGlobalMethodSecurity(securedEnabled = true) // @Secured 애너테이션 활성화
+@EnableGlobalMethodSecurity(securedEnabled = true) // @Secured 애너테이션 활성화
 public class PasswordEncryption {
 
     private final JwtUtil jwtUtil;
@@ -71,10 +72,6 @@ public class PasswordEncryption {
                         .anyRequest().authenticated() // 그 외 모든 요청 인증처리
         );
 
-//        http.formLogin((formLogin) ->
-//                formLogin
-//                        .loginPage("/api/user/login-page").permitAll()
-//        );
 
         // 필터 관리
         http.addFilterBefore(jwtAuthorizationFilter(), JwtAuthenticationFilter.class);

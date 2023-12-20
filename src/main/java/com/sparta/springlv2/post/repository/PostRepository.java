@@ -1,6 +1,6 @@
-package com.sparta.springlv2.repository;
+package com.sparta.springlv2.post.repository;
 
-import com.sparta.springlv2.entity.Post;
+import com.sparta.springlv2.post.domain.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,16 +1,16 @@
-package com.sparta.springlv2.entity;
+package com.sparta.springlv2.auth.domain.entity;
 
+import com.sparta.springlv2.post.domain.entity.TimeStamped;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.context.annotation.Primary;
 
 @Entity
 @Getter @Setter
 @NoArgsConstructor
 @Table(name ="users")
-public class User extends TimeStamped{
+public class User extends TimeStamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

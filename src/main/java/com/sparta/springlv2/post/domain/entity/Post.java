@@ -1,15 +1,14 @@
-package com.sparta.springlv2.entity;
+package com.sparta.springlv2.post.domain.entity;
 
 
-import com.sparta.springlv2.dto.PostRequestDto;
+import com.sparta.springlv2.auth.domain.entity.User;
+import com.sparta.springlv2.post.domain.dto.PostRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Entity
 @Getter
